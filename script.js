@@ -1,32 +1,54 @@
 // require('dotenv').config();
 // console.log(process.env.API_KEY);
-const API_TOKEN =`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`;
+const API_TOKEN = `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`;
 const MODEL_NAME = "mistralai/Mistral-7B-Instruct-v0.2";
 const inp = document.getElementById("dynamicInput");
 const out = document.getElementById("res");
 const arw = document.getElementById("arw");
+const loder = document.getElementById("loading");
 let prompt = "";
 let isCalled = false;
+let loding = false;
 
-arw.addEventListener("click", ()=>{
-  console.log('clicked');
+//console.log(loder);
+arw.addEventListener("click", () => {
+  // if(inp.innerText.toString().trim()==='')return;
+
   callapi();
 });
 
+function addItem(){
+
+}
 async function callapi() {
   if (isCalled) return;
-  out.innerHTML = "LOADING...";
   prompt = inp.value;
   inp.value = "";
+  out.innerText = "";
   adjustHeight();
-  queryMistral(prompt).then(
-    (response) =>
-      (out.innerText = response.substring(
+  loder.style.display = "block"
+  let ans;
+  queryMistral(prompt)
+    .then((response) => {
+      ans = response.substring(
         response.indexOf(`<s>[INST] ${prompt} [/INST]`) +
           `<s>[INST] ${prompt} [/INST]`.length +
           1
-      ))
-  );
+      );
+      ans = ans.split(" ");
+      ans.forEach((x, i) => {
+        setTimeout(() => {
+          out.innerText = out.innerText + " " + x;
+        }, 50 * i);
+      });
+    })
+    .catch((e) => {
+      out.innerText = "Error: Failed to fetch response.";
+      console.log(e);
+    })
+    .finally(() => {
+      loder.style.display = "none";
+    });
 }
 
 inp.addEventListener("input", adjustHeight);
