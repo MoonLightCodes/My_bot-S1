@@ -1,0 +1,78 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+    background-color: rgba(22, 146, 148, 0.715);
+    height: 100vh;
+}
+p{
+    width: 90%;
+    height: 90%;
+    border: 2px solid  rgb(22, 121, 126);
+    padding: 10px;
+    position: absolute;
+    border-radius: 10px;
+    top: 1%;
+    left: 50%;
+    box-shadow: 4px 4px 100px  rgba(2, 113, 115, 0.979);;
+    transform: translate(-50%,0%);
+    color: #fff;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+div{
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    display: flex;
+    border: 2px solid  rgba(7, 231, 235, 0.715);
+    width: 90%;
+    height: auto;
+    align-items: end;
+    justify-content: center;
+    border-radius: 10px;
+    background-color:  rgb(46, 180, 168);
+}
+div>textarea{
+    width: 90%;
+    height: 100%;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border: none;
+    background-color: rgb(46, 180, 168);
+    /* padding: 1% 5%;
+     */
+    padding-top: 5px;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    color: #fff;
+    font-size: 1.2em;
+}
+div>button{
+    bottom: 1%;
+    width: 10%;
+    height: 25px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    padding: 5px;
+    color: rgb(17, 217, 194);
+    background-color: rgb(46, 180, 168);
+}
+div>textarea::placeholder{
+    color: #fff;
+    font-size: 1em;
+}
+div>button:hover{
+    background-color: rgb(29, 109, 103);
+}
+div>textarea:focus{
+    outline: none;
+}
